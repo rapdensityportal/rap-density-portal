@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rap Density Portal v3</title>
+</head>
+
+<body style="background:#0b0f1a;color:white;font-family:Arial;text-align:center;">
+
+<h1>🔥 RAP DENSITY PORTAL v3 (30 ELEMENT ENGINE)</h1>
+
+<form method="POST">
+    <textarea name="verse" rows="10" cols="70" placeholder="Paste your verse here..."></textarea><br><br>
+    <button type="submit" style="padding:10px 20px;font-size:16px;">ANALYZE VERSE</button>
+</form>
+
+{% if result %}
+
+<hr>
+
+<h2>🏆 SCORE: {{ result.score }}/100</h2>
+<h3>{{ result.label }}</h3>
+
+<h2>📊 CORE METRICS</h2>
+<p>Total Words: {{ result.words }}</p>
+<p>Total Syllables: {{ result.syllables }}</p>
+<p>Avg Syllables/Word: {{ result.avg_syllables }}</p>
+<p>Multisyllable Count: {{ result.multi }}</p>
+
+<hr>
+
+<h2>🧠 ENGINE BREAKDOWN</h2>
+<p>Rhyme Engine: {{ result.rhyme }}</p>
+<p>Flow Engine: {{ result.flow }}</p>
+<p>Language Engine: {{ result.language }}</p>
+<p>Structure Engine: {{ result.structure }}</p>
+<p>Impact Engine: {{ result.impact }}</p>
+
+<hr>
+
+<h2>🟢 WHAT YOU DO WELL</h2>
+<ul>
+{% for item in result.good %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+<h2>🔴 WHAT NEEDS WORK</h2>
+<ul>
+{% for item in result.bad %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+</body>
+</html>
